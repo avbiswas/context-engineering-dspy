@@ -1,6 +1,6 @@
 # Roadmap
 
-- Intro: Need to create the most kickass guide to context engineering
+- Intro: The most kickass guide to context engineering I can make
 
 - [x] Level 1: Basics of prompt engineering
     - [x]  Atomic Prompts
@@ -9,14 +9,18 @@
     - [x]  Structured Outputs
     - [x]  DSPy: Mention its validation protocols
 
-- [ ]  Level 2: Multi-Step Interacions
+- [x]  Level 2: Multi-Step, Multi-agent Interacions
     - [x]  Sequential flow
     - [x]  Iterative refinement
     - [x]  Conditional Branching
-    - [ ]  Reflection, REACT
-    - [ ]  Tools: Web Search
+    - [x]  Reflection
 
-- [ ]  Level 3: RAGs
+- [ ] Level 3: Tool Calling
+    - [x]  Agents are just modules, man
+    - [ ]  Tools: Ex: Web Search, (Mention math tools)
+    - [ ]  REACT
+
+- [ ]  Level 4: RAGs
     - [ ]  Basic RAG
     - [ ]  Chunking
     - [ ]  Query Rewriting
@@ -24,7 +28,7 @@
     - [ ]  Context Integration, Rank Fusion
     - [ ]  Notes on variants: HyDE, FLARE, Multi-Hop
 
-- [ ]  Level 4: Ideas for self-improving systems
+- [ ]  Level 5: Ideas for self-improving systems
     - [ ]  Memory consolidation
     - [ ]  Evaluation
     - [ ]  Documentation
