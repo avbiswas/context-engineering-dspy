@@ -1,0 +1,10 @@
+jj/
+*csv
+data/
+*sqlite
+*db
+*mlruns*
+*mlartifacts*
+*pyc
+*__pycache__*
+*swp
