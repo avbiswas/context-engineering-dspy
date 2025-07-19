@@ -92,15 +92,12 @@ If you find this content helpful, please consider supporting my work on Patreon.
 -   `level2_multi_interaction/t3-multi_out.py`: Multiple output handling example.
 -   `level2_multi_interaction/t3-multi_out_refine.py`: Refined multiple output handling.
 -   `level2_multi_interaction/t4_reflection.py`: An example of how to make the model reflect on its own output.
--   `level2_multi_interaction/async_test.py`: Asynchronous processing examples.
--   `level2_multi_interaction/print_utils.py`: Utility functions for formatted printing.
 
 ### Level 3: Evaluation
 
 -   `level3_evaluation/analysis.ipynb`: Analysis notebook for evaluation techniques.
 -   `level3_evaluation/pairwise_elo.py`: Explains how to use the Elo rating system for pairwise comparison of model outputs.
 -   `level3_evaluation/reflection.py`: Shows how to use reflection for evaluation.
--   `level3_evaluation/print_utils.py`: Utility functions for formatted printing.
 
 ### Level 4: Tools
 
@@ -111,28 +108,42 @@ You will need the TAVILY_API_KEY to run web search. You can sign up for a free a
 -   `level4_tools/tools.py`: Tool definitions and implementations.
 -   `level4_tools/idea_gen.py`: Idea generation tool example.
 -   `level4_tools/joke_gen.py`: Joke generation tool example.
--   `level4_tools/print_utils.py`: Utility functions for formatted printing.
 
 ### Level 5: RAGs (Retrieval-Augmented Generation)
 
 First, download this dataset:
 https://www.kaggle.com/datasets/abhinavmoudgil95/short-jokes
 
+Unzip inside `level5/data`
 Next, prepare the embeddings:
 ```
 cd level5_rags
 uv run vector_embedding.py
 ```
+
+This code looks for the file `level5_rags/data/shortjokes.csv`
 This will create some files inside the `data/` directory. You should now be able to run scripts to play with retrieval.
 
+**Core RAG Implementations:**
 -   `level5_rags/basic_rag.py`: A basic RAG implementation.
 -   `level5_rags/hyde.py`: An implementation of the HyDE (Hypothetical Document Embeddings) technique.
--   `level5_rags/rank_fusion.py`: An example of fusing ranks from multiple retrievers.
 -   `level5_rags/annoy_rag.py`: RAG implementation using Annoy for vector similarity.
+
+**Retrieval Components:**
 -   `level5_rags/bm25_retriever.py`: BM25-based retrieval implementation.
+-   `level5_rags/rank_fusion.py`: An example of fusing ranks from multiple retrievers.
 -   `level5_rags/vector_embedding.py`: Vector embedding utilities.
+
+**Tools & Applications:**
+-   `level5_rags/main.py`: Main application with RAG-powered tools.
+-   `level5_rags/tools.py`: Tool definitions for RAG applications.
+-   `level5_rags/joke_gen.py`: Joke generation using RAG.
+-   `level5_rags/idea_gen.py`: Idea generation using RAG.
+
+**Utilities:**
 -   `level5_rags/prepare_data.py`: Data preparation utilities for RAG systems.
 -   `level5_rags/data/`: Directory containing data files for RAG examples.
+
 
 ## Quick Start Patterns
 
