@@ -17,8 +17,9 @@
 
 - [ ] Level 3: Tool Calling
     - [x]  Agents are just modules, man
-    - [ ]  Tools: Ex: Web Search, (Mention math tools)
-    - [ ]  REACT
+    - [x]  Tools: Ex: Web Search, (Mention math tools)
+    - [x]  REACT
+    - [x]  Explain MCP, A2A
 
 - [ ]  Level 4: RAGs
     - [ ]  Basic RAG
@@ -28,8 +29,11 @@
     - [ ]  Context Integration, Rank Fusion
     - [ ]  Notes on variants: HyDE, FLARE, Multi-Hop
 
-- [ ]  Level 5: Ideas for self-improving systems
+- [ ] Level 5: Memory
     - [ ]  Memory consolidation
+    - [ ] Mem0
+
+- [ ]  Level 5: Ideas for self-improving systems
     - [ ]  Evaluation
     - [ ]  Documentation
 

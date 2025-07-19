@@ -4,6 +4,7 @@ import asyncio
 from print_utils import print
 from typing import List, Optional
 from pydantic import BaseModel, Field
+from tools import fetch_recent_news
 
 class JokeIdea(BaseModel):
     setup: str
@@ -52,7 +53,9 @@ def check_score_goodness(args, pred):
 
 class IdeaGenerator(dspy.Module):
     def __init__(self, num_samples=3):
-        self.query_to_idea = dspy.ChainOfThought(QueryToIdea)
+        self.query_to_idea = dspy.ReAct(QueryToIdea,
+                            tools=[fetch_recent_news],
+                            max_iters=1)
         self.judge = dspy.Refine(
             module=dspy.ChainOfThought(JokeJudge),
             N=3, reward_fn=check_score_goodness, threshold=1,
