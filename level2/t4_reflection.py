@@ -1,9 +1,19 @@
+import time
 import dspy
 import asyncio
+
+from dspy.teleprompt.mipro_optimizer_v2 import select
 from print_utils import print
 from typing import List, Optional
 from pydantic import BaseModel, Field
+
+# Uncomment this to use mlflow
 import mlflow
+mlflow.autolog()
+mlflow.set_tracking_uri("http://127.0.0.1:5000")
+mlflow.set_experiment("Reflection")
+
+
 dspy.configure(lm=dspy.LM("openai/gpt-4.1-mini"), temperature=1)
 dspy.configure_cache(
     enable_disk_cache=False,
@@ -57,7 +67,7 @@ def check_score_goodness(args, pred):
 
 
 class ConditionalJokeGenerator(dspy.Module):
-    def __init__(self, num_samples=3, num_reflection_steps=3):
+    def __init__(self, num_samples=2, num_reflection_steps=2):
         self.query_to_idea = dspy.ChainOfThought(QueryToIdea)
         self.idea_to_joke = dspy.ChainOfThought(IdeaToJoke)
         self.idea_to_joke.set_lm(lm=dspy.LM("openai/gpt-4.1", temperature=0.7))
@@ -69,11 +79,14 @@ class ConditionalJokeGenerator(dspy.Module):
         self.num_samples = num_samples
         self.num_reflection_steps = num_reflection_steps
         
+
     async def aforward(self, query: str):
 
         joke_ideas = await asyncio.gather(
-            *[self.query_to_idea.acall(query=query) for _ in range(self.num_samples)]
+            *[self.query_to_idea.aforward(query=query) for _ in range(self.num_samples)]
         )
+
+        raise Exception("Something went wrong")
 
         print("Generated Joke Ideas: \n", joke_ideas)
 
@@ -83,7 +96,7 @@ class ConditionalJokeGenerator(dspy.Module):
         best_joke_idea_idx = judge_score.index(1)
         selected_joke_idea = joke_ideas[best_joke_idea_idx]
         print("Selected Joke Idea: \n", selected_joke_idea)
-
+        
         joke = None
         for _ in range(self.num_reflection_steps):
             joke = self.idea_to_joke(joke_idea=selected_joke_idea,
@@ -94,12 +107,14 @@ class ConditionalJokeGenerator(dspy.Module):
 
 async def main():
     joke_generator = ConditionalJokeGenerator()
+    start_time = time.time()
     joke = await joke_generator.acall(
         query="Write a joke about AI that has to do with them turning rogue."
     )
 
     print("---")
     print(joke)
+    print(time.time() - start_time)
 
 
 if __name__ == "__main__":
