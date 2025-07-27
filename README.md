@@ -95,9 +95,22 @@ If you find this content helpful, please consider supporting my work on Patreon.
 
 ### Level 3: Evaluation
 
+To run mlflow server, use the command:
+`uv run mlflow server --backend-store-uri sqlite:///mydb.sqlite --port 5000`
+
+Uncomment the below lines to track experiments in mlflow
+
+```
+# import mlflow
+# mlflow.autolog()
+# mlflow.set_tracking_uri("http://127.0.0.1:5000")
+# mlflow.set_experiment("Tool calling")
+```
+You can visit `localhost:5000` to track experiments from the mlflow dashboard.
+
+-   `level3_evaluation/reflection.py`: Shows how to use reflection for evaluation to generate dataset of results with different hyperparams.
+-   `level3_evaluation/pairwise_elo.py`: Use pairwise comparison of model outputs (not actual elo, but similar motives)
 -   `level3_evaluation/analysis.ipynb`: Analysis notebook for evaluation techniques.
--   `level3_evaluation/pairwise_elo.py`: Explains how to use the Elo rating system for pairwise comparison of model outputs.
--   `level3_evaluation/reflection.py`: Shows how to use reflection for evaluation.
 
 ### Level 4: Tools
 
