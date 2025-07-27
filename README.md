@@ -85,7 +85,6 @@ If you find this content helpful, please consider supporting my work on Patreon.
 
 ### Level 2: Multi-Interaction
 
--   `level2_multi_interaction/t1_sequence.py`: Basic sequence example.
 -   `level2_multi_interaction/t1_sequential_flow.py`: Demonstrates a sequential flow of interactions with the language model.
 -   `level2_multi_interaction/t2_iterative_refinement.py`: Shows how to iteratively refine the output from the model.
 -   `level2_multi_interaction/t3_conditional_branch.py`: Illustrates how to use conditional logic to guide the conversation with the model.
