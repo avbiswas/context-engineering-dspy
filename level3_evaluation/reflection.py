@@ -8,6 +8,11 @@ from print_utils import print
 from typing import List, Optional
 from pydantic import BaseModel, Field
 
+# import mlflow
+# mlflow.autolog()
+# mlflow.set_tracking_uri("http://127.0.0.1:5000")
+# mlflow.set_experiment("Reflection")
+
 dspy.configure(track_usage=True)
 dspy.configure_cache(
     enable_disk_cache=False,
